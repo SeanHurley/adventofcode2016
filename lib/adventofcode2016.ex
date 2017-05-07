@@ -9,6 +9,8 @@ defmodule AdventOfCode2016 do
       "3.2" -> Day3.count_valid_triangles_from_column_file("data/day3.txt")
       "4" -> Day4.sector_from_file("data/day4.txt")
       "4.2" -> Day4.decrypt_from_file("data/day4.txt")
+      "5" -> Day5.password_for_door("ojvtpuvg")
+      "5.2" -> Day5.password_for_advanced_door("ojvtpuvg")
     end
     IO.inspect result, limit: :infinity
   end
