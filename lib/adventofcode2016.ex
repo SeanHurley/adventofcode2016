@@ -11,6 +11,8 @@ defmodule AdventOfCode2016 do
       "4.2" -> Day4.decrypt_from_file("data/day4.txt")
       "5" -> Day5.password_for_door("ojvtpuvg")
       "5.2" -> Day5.password_for_advanced_door("ojvtpuvg")
+      "6" -> Day6.calculate_password_from_file("data/day6.txt")
+      "6.2" -> Day6.calculate_password_from_least_file("data/day6.txt")
     end
     IO.inspect result, limit: :infinity
   end
