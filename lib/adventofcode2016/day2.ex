@@ -29,14 +29,12 @@ defmodule Day2 do
   def keypad2, do: @keypad2
 
   def code_from_file(keypad, filename) do
-    {:ok, instructions} = File.read(filename)
-    code_from_instructions(keypad, instructions)
+    Util.parse_file(filename)
+    |> code_from_instructions(keypad)
   end
 
-  def code_from_instructions(keypad, instructions) do
-    code = String.trim(instructions)
-    |> String.split("\n")
-    |> Enum.reduce("5", &(handle_input_line(keypad, &1, &2)))
+  def code_from_instructions(instructions, keypad) do
+    code = Enum.reduce(instructions, "5", &(handle_input_line(keypad, &1, &2)))
     |> String.slice(1..-1)
 
     code

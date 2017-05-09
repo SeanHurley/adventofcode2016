@@ -1,19 +1,17 @@
 defmodule Day3 do
   def count_valid_triangles_from_column_file(filename) do
-    {:ok, contents} = File.read filename
-    columns = parse_string(contents)
-    count_valid_triangles_columns(columns)
+    Util.parse_file(filename)
+    |> parse_string
+    |> count_valid_triangles_columns
   end
 
   def count_valid_triangles_from_file(filename) do
-    {:ok, contents} = File.read filename
-    count_valid_triangles_from_string(contents)
+    Util.parse_file(filename)
+    |> count_valid_triangles_from_string
   end
 
   defp parse_string(contents) do
-    String.trim(contents)
-    |> String.split("\n")
-    |> Enum.map(&(String.trim(&1)))
+    Enum.map(contents, &(String.trim(&1)))
     |> Enum.map(&(String.split(&1, ~r/\s+/)))
     |> Enum.map(&(Enum.map(&1, fn(str) -> String.to_integer(str) end)))
   end

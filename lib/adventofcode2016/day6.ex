@@ -1,15 +1,11 @@
 defmodule Day6 do
   def calculate_password_from_file(filename) do
-    {:ok, contents} = File.read(filename)
-    String.trim(contents)
-    |> String.split("\n")
+    Util.parse_file(filename)
     |> calculate_password
   end
 
   def calculate_password_from_least_file(filename) do
-    {:ok, contents} = File.read(filename)
-    String.trim(contents)
-    |> String.split("\n")
+    Util.parse_file(filename)
     |> calculate_password_from_least
   end
 

@@ -1,16 +1,16 @@
 defmodule Day1 do
   def distance_from_file(filename) do
-    {:ok, string} = File.read(filename)
-    distance_from_string(String.trim(string))
+    Util.parse_file(filename, ", ")
+    |> distance_from_string
   end
 
   def distance_from_file_duplicate(filename) do
-    {:ok, string} = File.read(filename)
-    distance_from_string_duplicate(String.trim(string))
+    Util.parse_file(filename, ", ")
+    |> distance_from_string_duplicate
   end
 
-  def distance_from_string_duplicate(path_string) do
-    {moves, _} = calculate_moves(path_string)
+  def distance_from_string_duplicate(paths) do
+    {moves, _} = calculate_moves(paths)
     {absolute_moves, _} = Enum.flat_map_reduce moves, {0, 0}, fn ({_, nx, ny}, {cx, cy}) ->
       [_|rest] = for x <- cx..nx,
           y <- cy..ny,
@@ -25,14 +25,13 @@ defmodule Day1 do
     abs(x) + abs(y)
   end
 
-  def distance_from_string(path_string) do
-    {_, { _, final_x, final_y}} = calculate_moves(path_string)
+  def distance_from_string(paths) do
+    {_, { _, final_x, final_y}} = calculate_moves(paths)
     abs(final_x) + abs(final_y)
   end
 
-  defp calculate_moves(path_string) do
-    String.split(path_string, ", ")
-    |> Enum.map(&parse_move/1)
+  defp calculate_moves(paths) do
+    Enum.map(paths, &parse_move/1)
     |> Enum.map_reduce({"N", 0, 0}, &update_move/2)
   end
 

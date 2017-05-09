@@ -1,16 +1,12 @@
 defmodule Day4 do
   def decrypt_from_file(filename) do
-    {:ok, contents} = File.read(filename)
-    String.trim(contents)
-    |> String.split("\n")
+    Util.parse_file(filename)
     |> filter_rooms
     |> Enum.map(&decrypt_room/1)
   end
 
   def sector_from_file(filename) do
-    {:ok, contents} = File.read(filename)
-    String.trim(contents)
-    |> String.split("\n")
+    Util.parse_file(filename)
     |> sector_from_rooms
   end
 
