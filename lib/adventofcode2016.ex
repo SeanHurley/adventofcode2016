@@ -17,6 +17,7 @@ defmodule AdventOfCode2016 do
       "7.2" -> Day7.count_supports_ssl_from_file("data/day7.txt")
       "8" -> Day8.pixels_from_file("data/day8.txt")
       "8.2" -> IO.puts Day8.file_to_string("data/day8.txt")
+      "9" -> Day9.expand_file("data/day9.txt")
     end
     IO.inspect result, limit: :infinity
   end
