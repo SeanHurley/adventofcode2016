@@ -15,6 +15,8 @@ defmodule AdventOfCode2016 do
       "6.2" -> Day6.calculate_password_from_least_file("data/day6.txt")
       "7" -> Day7.count_supports_tls_from_file("data/day7.txt")
       "7.2" -> Day7.count_supports_ssl_from_file("data/day7.txt")
+      "8" -> Day8.pixels_from_file("data/day8.txt")
+      "8.2" -> IO.puts Day8.file_to_string("data/day8.txt")
     end
     IO.inspect result, limit: :infinity
   end

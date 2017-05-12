@@ -30,7 +30,8 @@ defmodule Adventofcode2016.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false}
+      {:mix_test_watch, "~> 0.3", only: :dev, runtime: false},
+      {:array, git: "https://github.com/seanhurley/elixir-array"},
     ]
   end
 end
