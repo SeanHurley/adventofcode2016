@@ -13,6 +13,8 @@ defmodule AdventOfCode2016 do
       "5.2" -> Day5.password_for_advanced_door("ojvtpuvg")
       "6" -> Day6.calculate_password_from_file("data/day6.txt")
       "6.2" -> Day6.calculate_password_from_least_file("data/day6.txt")
+      "7" -> Day7.count_supports_tls_from_file("data/day7.txt")
+      "7.2" -> Day7.count_supports_ssl_from_file("data/day7.txt")
     end
     IO.inspect result, limit: :infinity
   end
