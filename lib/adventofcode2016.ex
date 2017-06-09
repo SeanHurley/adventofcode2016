@@ -19,6 +19,7 @@ defmodule AdventOfCode2016 do
       "8.2" -> IO.puts Day8.file_to_string("data/day8.txt")
       "9" -> Day9.expand_v1_file("data/day9.txt")
       "9.2" -> Day9.expand_v2_file("data/day9.txt")
+      "10" -> Day10.process_file("data/day10.txt")
     end
     IO.inspect result, limit: :infinity
   end
