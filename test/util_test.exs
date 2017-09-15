@@ -18,4 +18,16 @@ defmodule UtilTest do
       "baz",
     ]
   end
+
+  test "combines lists" do
+    list = Util.combine_lists([1,2], [3,4,5])
+    assert list == [
+      [1,3],
+      [1,4],
+      [1,5],
+      [2,3],
+      [2,4],
+      [2,5],
+    ]
+  end
 end
