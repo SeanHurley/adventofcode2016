@@ -22,6 +22,8 @@ defmodule AdventOfCode2016 do
       "10" -> Day10.process_file("data/day10.txt")
       "12" -> Day12.evaluate_from_file("data/day12.txt")
       "12.2" -> Day12.evaluate_from_file("data/day12.txt", 1)
+      "13" -> Day13.shortest_path(31, 39, 1362)
+      "13.2" -> Day13.possible_nodes(1362)
     end
     IO.inspect result, limit: :infinity
   end
