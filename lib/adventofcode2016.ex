@@ -20,6 +20,8 @@ defmodule AdventOfCode2016 do
       "9" -> Day9.expand_v1_file("data/day9.txt")
       "9.2" -> Day9.expand_v2_file("data/day9.txt")
       "10" -> Day10.process_file("data/day10.txt")
+      "12" -> Day12.evaluate_from_file("data/day12.txt")
+      "12.2" -> Day12.evaluate_from_file("data/day12.txt", 1)
     end
     IO.inspect result, limit: :infinity
   end
