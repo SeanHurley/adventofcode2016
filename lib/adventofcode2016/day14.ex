@@ -28,16 +28,18 @@ defmodule Day14 do
   end
 
   def valid_five?(character, input) do
-    {:ok, regex} = Regex.compile("((#{character})\\2{4,})")
+    {:ok, regex} = Regex.compile("#{String.duplicate(character, 5)}")
     Regex.run(regex, input)
   end
 
   def next_1000_match?(prefix, number, initial_match, cache, stretch \\ 0) do
-    Enum.any?(1..1000, fn(index) ->
-      next_num = number + index
+    Enum.map(1..1000, &Task.async(fn -> 
+      next_num = number + &1
       next_hash =  md5(prefix, next_num, cache, stretch)
       valid_five?(initial_match, next_hash)
-    end)
+    end))
+    |> Enum.map(&Task.await(&1))
+    |> Enum.any?(&(&1))
   end
 
   def valid_hash?(prefix, number, cache, stretch \\ 0) do
@@ -50,16 +52,16 @@ defmodule Day14 do
   end
 
   defp md5(prefix, index, cache, stretch) do
-    input = prefix <> Integer.to_string(index)
-    cache_get = Agent.get(cache, &Map.get(&1, input))
+    cache_get = Agent.get(cache, &Map.get(&1, index))
 
+    input = prefix <> Integer.to_string(index)
     if cache_get do
       cache_get
     else
       hash = Enum.reduce(0..stretch, input, fn(_, current) ->
-        :crypto.hash(:md5, current) |> Base.encode16(case: :lower)
+        :erlang.md5(current) |> Base.encode16(case: :lower)
       end)
-      Agent.update(cache, &Map.put(&1, input, hash))
+      Agent.update(cache, &Map.put(&1, index, hash))
       hash
     end
   end
