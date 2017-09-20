@@ -26,6 +26,8 @@ defmodule AdventOfCode2016 do
       "13.2" -> Day13.possible_nodes(1362)
       "14" -> Day14.last_index("yjdafjpo")
       "14.2" -> Day14.last_index("yjdafjpo", 2016)
+      "15" -> Day15.first_valid_time_from_file("data/day15.txt")
+      "15.2" -> Day15.first_valid_time_from_file("data/day15.2.txt")
     end
     IO.inspect result, limit: :infinity
   end
