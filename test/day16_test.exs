@@ -1,7 +1,6 @@
 defmodule Day16Test do
   use ExUnit.Case
 
-  # Needs to truncate
   test "generates enough data" do
     extended = Day16.expand("10000", 20)
     assert extended == "10000011110010000111"
