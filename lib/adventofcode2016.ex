@@ -30,6 +30,8 @@ defmodule AdventOfCode2016 do
       "15.2" -> Day15.first_valid_time_from_file("data/day15.2.txt")
       "16" -> Day16.calculate_checksum("01000100010010111", 272)
       "16.2" -> Day16.calculate_checksum("01000100010010111", 35651584)
+      "17" -> Day17.shortest_path("veumntbg", {0,0})
+      "17.2" -> Day17.longest_path("veumntbg", {0,0})
     end
     IO.inspect result, limit: :infinity
   end
