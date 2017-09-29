@@ -33,12 +33,11 @@ defmodule Day14 do
   end
 
   def next_1000_match?(prefix, number, initial_match, cache, stretch \\ 0) do
-    Enum.map(1..1000, &Task.async(fn -> 
-      next_num = number + &1
+    Util.pmap(1..1000, fn(increment) ->
+      next_num = number + increment
       next_hash =  md5(prefix, next_num, cache, stretch)
       valid_five?(initial_match, next_hash)
-    end))
-    |> Enum.map(&Task.await(&1))
+    end)
     |> Enum.any?(&(&1))
   end
 
