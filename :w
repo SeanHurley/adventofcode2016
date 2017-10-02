@@ -1,0 +1,13 @@
+defmodule Day20 do
+  def allowed_ips(filter) do
+    filter
+    |> Enum.sort
+    |> parse
+  end
+
+  defp parse(filter) do
+    Enum.map(filter, fn(filter) ->
+      [start, finish] = String.split(filter, "-")
+    end)
+  end
+end

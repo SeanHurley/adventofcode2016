@@ -36,6 +36,8 @@ defmodule AdventOfCode2016 do
       "18.2" -> Day18.safe_tiles("^..^^.^^^..^^.^...^^^^^....^.^..^^^.^.^.^^...^.^.^.^.^^.....^.^^.^.^.^.^.^.^^..^^^^^...^.....^....^.", 399999)
       "19" -> Day19.winner(3014603)
       "19.2" -> Day19.winner2(3014603)
+      "20" -> Day20.allowed_ips_from_file("data/day20.txt")
+      "20.2" -> Day20.count_allowed_ips_from_file("data/day20.txt")
     end
     IO.inspect result, limit: :infinity
   end
