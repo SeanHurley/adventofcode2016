@@ -38,6 +38,8 @@ defmodule AdventOfCode2016 do
       "19.2" -> Day19.winner2(3014603)
       "20" -> Day20.allowed_ips_from_file("data/day20.txt")
       "20.2" -> Day20.count_allowed_ips_from_file("data/day20.txt")
+      "21" -> Day21.scramble_from_file("abcdefgh", "data/day21.txt")
+      "21.2" -> Day21.unscramble_from_file("fbgdceah", "data/day21.txt")
     end
     IO.inspect result, limit: :infinity
   end
