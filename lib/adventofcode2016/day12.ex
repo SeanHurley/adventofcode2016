@@ -33,6 +33,7 @@ defmodule Day12 do
       "inc" -> inc(args, program)
       "dec" -> dec(args, program)
       "jnz" -> jnz(args, program)
+      "tgl" -> tgl(args, program)
     end
   end
 
@@ -58,8 +59,24 @@ defmodule Day12 do
   def jnz(args, program) do
     [test_value, jump_by] = args
     test_value = register_or_value(program.registers, test_value)
-    jump_by = if (test_value == 0), do: 1, else: String.to_integer(jump_by)
+    jump_by = if (test_value == 0), do: 1, else: register_or_value(program.registers, jump_by)
     updated_program_instructions(program, program.registers, jump_by)
+  end
+
+  def tgl(args, program) do
+    jump_by = register_or_value(program.registers, hd(args))
+    instructions = program.instructions
+    instructions = List.update_at(instructions, program.instruction_counter + jump_by, fn(instruction) ->
+      [command | args] = String.split(instruction, " ")
+      case command do
+        "tgl" -> "inc #{Enum.join(args, " ")}"
+        "cpy" -> "jnz #{Enum.join(args, " ")}"
+        "inc" -> "dec #{Enum.join(args, " ")}"
+        "dec" -> "inc #{Enum.join(args, " ")}"
+        "jnz" -> "cpy #{Enum.join(args, " ")}"
+      end
+    end)
+    %{program | instruction_counter: program.instruction_counter + 1, instructions: instructions}
   end
 
   defp updated_program_instructions(program, registers, instruction_increment) do

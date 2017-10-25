@@ -72,6 +72,24 @@ defmodule Day12Test do
     }
   end
 
+  test "toggles" do
+    registers = Day12.evaluate([
+      "cpy 2 a",
+      "tgl a",
+      "tgl a",
+      "tgl a",
+      "cpy 1 a",
+      "dec a",
+      "dec a",
+    ])
+
+    assert registers == %{
+      a: 3,
+      b: 0,
+      c: 0,
+      d: 0,
+    }
+  end
   test "executes_from_file" do
     registers = Day12.evaluate_from_file("test/data/day12.txt")
 

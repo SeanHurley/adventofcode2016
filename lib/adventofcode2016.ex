@@ -41,6 +41,7 @@ defmodule AdventOfCode2016 do
       "21" -> Day21.scramble_from_file("abcdefgh", "data/day21.txt")
       "21.2" -> Day21.unscramble_from_file("fbgdceah", "data/day21.txt")
       "22" -> Day22.count_viable_pairs_from_file("data/day22.txt")
+      "23" -> Day12.evaluate_from_file("data/day23.txt")
     end
     IO.inspect result, limit: :infinity
   end
