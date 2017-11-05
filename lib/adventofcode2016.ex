@@ -43,6 +43,7 @@ defmodule AdventOfCode2016 do
       "22" -> Day22.count_viable_pairs_from_file("data/day22.txt")
       "23" -> Day12.evaluate_from_file("data/day23.txt")
       "23.2" -> Day12.evaluate_from_file("data/day23.2.txt")
+      "24" -> Day24.count_steps_from_file("data/day24.txt")
     end
     IO.inspect result, limit: :infinity
   end
