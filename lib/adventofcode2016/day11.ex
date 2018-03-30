@@ -1,7 +1,7 @@
 defmodule Day11 do
   def process do
     game = %{
-      f1: ["sg", "sm", "pg", "pm"],
+      f1: ["em", "eg", "dm", "dg", "sg", "sm", "pg", "pm"],
       f2: ["tg", "rg", "rm", "cg", "cm"],
       f3: ["tm"],
       f4: [],

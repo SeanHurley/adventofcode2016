@@ -1,21 +1,28 @@
 defmodule Day20 do
-  def count_allowed_ips(filters) do
-    allowed_ips(filters)
-    |> count
-  end
-
   def count_allowed_ips_from_file(file) do
-    Util.parse_file(file)
-    |> count_allowed_ips
+    ranges = Util.parse_file(file)
+    |> parse
+
+    blocked = remove_overlap(ranges)
+    |> Enum.reduce(0, fn({first, last}, total_blocked) ->
+      total_blocked + (last - first + 1)
+    end)
+
+    4294967296 - blocked
   end
 
-  defp count(ranges) do
-    ranges
-    |> parse
-    |> Enum.map(fn({first, last}) ->
-      last - first + 1
+  defp remove_overlap(ranges) do
+    Enum.reduce(1..150, ranges, fn(_, ranges) ->
+      Enum.map(ranges, fn({first, last}) ->
+        {firsts, lasts} = Enum.filter(ranges, fn({second_first, second_last}) ->
+          first >= second_first && first <= second_last ||
+          last >= second_first && last <= second_last
+        end)
+        |> Enum.unzip
+        {Enum.min(firsts), Enum.max(lasts)}
+      end)
+    |> Enum.uniq
     end)
-    |> Enum.sum
   end
 
   def allowed_ips_from_file(filename) do
