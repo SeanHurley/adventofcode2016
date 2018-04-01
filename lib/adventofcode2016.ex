@@ -42,6 +42,7 @@ defmodule AdventOfCode2016 do
       "21" -> Day21.scramble_from_file("abcdefgh", "data/day21.txt")
       "21.2" -> Day21.unscramble_from_file("fbgdceah", "data/day21.txt")
       "22" -> Day22.count_viable_pairs_from_file("data/day22.txt")
+      "22.2" -> Day22.print_file("data/day22.txt")
       "23" -> Day12.evaluate_from_file("data/day23.txt")
       "23.2" -> Day12.evaluate_from_file("data/day23.2.txt")
       "24" -> Day24.count_steps_from_file("data/day24.txt")

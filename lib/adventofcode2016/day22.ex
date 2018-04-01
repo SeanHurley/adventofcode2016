@@ -17,20 +17,20 @@ defmodule Day22 do
   def print_nodes(nodes) do
     {max_x, _, _, _} = Enum.max_by(nodes, &(elem(&1, 0)))
     {_, max_y, _, _} = Enum.max_by(nodes, &(elem(&1, 1)))
-    target_node = Enum.find(nodes, fn({x, y, _, _}) ->
-      x == max_x && y == max_y
-    end)
-    Enum.each(0..max_x, fn(x) ->
-      Enum.each(0..max_y, fn(y) ->
+    Enum.each(0..max_y, fn(y) ->
+      Enum.each(0..max_x, fn(x) ->
         node = Enum.find(nodes, fn({n_x, n_y, _, _}) ->
           n_x == x && n_y == y
         end)
-        if elem(node, 3) > elem(target_node, 2) do
-          IO.write(".")
+        {_, _, used, avail} = node
+        if used > 100 do
+          IO.write "   |    "
         else
-          IO.write("#")
+          IO.write String.pad_leading(Integer.to_string(used), 3, " ")
+          IO.write "/"
+          IO.write String.pad_trailing(Integer.to_string(avail + used), 3, " ")
+          IO.write(" ")
         end
-        IO.write(" ")
       end)
       IO.puts("")
     end)
